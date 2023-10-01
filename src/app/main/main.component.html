@@ -1,0 +1,53 @@
+<div class="component">
+  <div class="search-bar">
+    <input type="text" placeholder="Search" [(ngModel)]="searchText" />
+    <button (click)="searchItems()">Search</button>
+    <button (click)="resetSearch()">Reset</button>
+  </div>
+  <button (click)="addItem()">Add Item</button>
+
+  <!-- Add Item Form -->
+  <div *ngIf="isAddingItem" class="add-item-form">
+    <form #newItemForm="ngForm" (ngSubmit)="saveItem(newItemForm)">
+      <label for="item">Item:</label>
+      <input type="text" id="item" name="item" ngModel required />
+
+      <label for="price">Price:</label>
+      <input type="number" id="price" name="price" ngModel required />
+
+      <label for="quantity">Quantity:</label>
+      <input type="number" id="quantity" name="quantity" ngModel required />
+
+      <label for="discount">Discount:</label>
+      <input type="number" id="discount" name="discount" ngModel required />
+
+      <button type="submit">Save</button>
+      <button type="button" (click)="cancelAddItem()">Cancel</button>
+    </form>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Item</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Discount</th>
+        <th>Total</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items">
+        <td>{{ item.id }}</td>
+        <td>{{ item.item }}</td>
+        <td>{{ item.price | currency }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>{{ item.discount | currency }}</td>
+        <td>{{ item.price * item.quantity - item.discount | currency }}</td>
+        <td><button (click)="deleteItem(item.id)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

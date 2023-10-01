@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: blue;
+  padding: 10px 20px;
+  color: white;
+}
+
+.logo img {
+  width: 40px; /* Adjust the width of the logo as needed */
+}
+
+.admin {
+  font-size: 18px;
+}
+.sales-info {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  padding: 10px;
+}
+
+.item {
+  color: black;
+}
