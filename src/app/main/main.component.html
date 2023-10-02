@@ -50,4 +50,25 @@
       </tr>
     </tbody>
   </table>
+
+  <!-- Receipt Section (Vertical Form) -->
+  <div class="receipt">
+    <h2>Receipt</h2>
+    <div *ngFor="let item of items">
+      <div class="receipt-item">
+        <div><strong>Item:</strong> {{ item.item }}</div>
+        <div><strong>Price:</strong> {{ item.price | currency }}</div>
+        <div><strong>Quantity:</strong> {{ item.quantity }}</div>
+        <div>
+          <strong>Total:</strong>
+          {{ item.price * item.quantity - item.discount | currency }}
+        </div>
+      </div>
+    </div>
+    <div class="receipt-total">
+      <div><strong>Subtotal:</strong> {{ calculateSubtotal() | currency }}</div>
+      <div><strong>Tax (8%):</strong> {{ calculateTax() | currency }}</div>
+      <div><strong>Total:</strong> {{ calculateTotal() | currency }}</div>
+    </div>
+  </div>
 </div>

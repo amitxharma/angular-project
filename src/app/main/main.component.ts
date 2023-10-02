@@ -56,4 +56,21 @@ export class MainComponent {
     this.searchText = '';
     // Reload your original data here or implement a way to reset to the original data
   }
+
+  calculateSubtotal(): number {
+    let subtotal = 0;
+    for (const item of this.items) {
+      subtotal += item.price * item.quantity - item.discount;
+    }
+    return subtotal;
+  }
+
+  calculateTax(): number {
+    // Assuming a tax rate of 8%
+    return this.calculateSubtotal() * 0.08;
+  }
+
+  calculateTotal(): number {
+    return this.calculateSubtotal() + this.calculateTax();
+  }
 }
